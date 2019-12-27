@@ -6,12 +6,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Recipe App',
+      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
+        primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -57,21 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: Icon(Icons.add),
-      ),
-    );
-  }
-}
-
-
-class VerticalAppBar extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return RotatedBox(
-      quarterTurns: 3,
-      child: AppBar(
-        primary: false,
-        title: Text('My Bar'),
-      ),
+      ), 
     );
   }
 }
