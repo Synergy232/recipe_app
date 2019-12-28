@@ -12,17 +12,17 @@ class _BottomTabbarExampleState extends State<BottomTabbarExample>
   TabController _tabController;
 
   static const _kTabPages = <Widget>[
-    Center(child: Icon(Icons.cloud, size: 64.0, color: Colors.teal)),
+    Center(child: Icon(Icons.wb_sunny, size: 64.0, color: Colors.teal)),
     Center(child: Icon(Icons.alarm, size: 64.0, color: Colors.cyan)),
     Center(child: Icon(Icons.forum, size: 64.0, color: Colors.blue)),
-    Center(child: Icon(Icons.ac_unit, size: 64.0, color: Colors.green))
+    Center(child: Icon(Icons.cake, size: 64.0, color: Colors.green))
     
   ];
   static const _kTabs = <Tab>[
-    Tab(icon: Icon(Icons.cloud), text: 'Breakfast'),
-    Tab(icon: Icon(Icons.alarm), text: 'Lunch'),
-    Tab(icon: Icon(Icons.forum), text: 'Dinner'),
-    Tab(icon: Icon(Icons.ac_unit), text: 'Dessert')
+    Tab(text: 'Breakfast'),
+    Tab(text: 'Lunch'),
+    Tab(text: 'Dinner'),
+    Tab(text: 'Dessert')
   ];
 
   @override
