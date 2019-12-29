@@ -49,7 +49,7 @@ class _BottomTabbarExampleState extends State<BottomTabbarExample>
         controller: _tabController,
       ),
       bottomNavigationBar: Material(
-        color: Colors.blue,
+        color: Colors.red,
         child: TabBar(
           tabs: _kTabs,
           controller: _tabController,
