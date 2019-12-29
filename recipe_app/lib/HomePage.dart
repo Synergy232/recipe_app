@@ -11,6 +11,9 @@ class HomePage extends StatelessWidget {
       home: DefaultTabController(
         length: 4,
         child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.red,
+          ),
           body: TabBarView(
             children: [
               Breakfast(),
