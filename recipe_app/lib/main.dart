@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'BottomNavTabBar.dart';
-import 'Pages/Breakfast.dart';
+import 'HomePage.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,7 +9,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blue,
         primaryColor: Colors.grey,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
@@ -31,6 +30,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     //return BottomTabbarExample();
-    return TabBarDemo();
+    return HomePage();
   }
 }
