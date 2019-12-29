@@ -29,7 +29,14 @@ class _MyHomePageState extends State<MyHomePage> {
   
   @override
   Widget build(BuildContext context) {
-    //return BottomTabbarExample();
-    return HomePage();
+    return Align(
+      alignment: Alignment.topLeft,
+      child: SafeArea(
+      left: false,
+      top: true,
+      right: false,
+      bottom: false,
+      //minimum: const EdgeInsets.all(16.0),
+      child: HomePage()));
   }
 }
