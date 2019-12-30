@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/Login.dart';
 import 'HomePage.dart';
 void main() => runApp(MyApp());
 
@@ -7,12 +8,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Recipe_App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         primaryColor: Colors.grey,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Recipe App'),
     );
   }
 }
@@ -37,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
       right: false,
       bottom: false,
       //minimum: const EdgeInsets.all(16.0),
-      child: HomePage()));
+      //child: HomePage()));
+      child: LoginPage()));
   }
 }
