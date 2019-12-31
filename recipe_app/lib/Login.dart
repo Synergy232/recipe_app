@@ -55,17 +55,23 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
-      appBar: null,
       //appBar: _buildBar(context),
-      body: new Container(
-        padding: EdgeInsets.all(16.0),
-        child: new Column(
-          children: <Widget>[
-            _buildTextFields(),
-            _buildButtons(),
-          ],
+      body: SingleChildScrollView(
+              child: Padding(
+          padding: const EdgeInsets.only(top: 100),
+          child: Container(
+              padding: EdgeInsets.all(50),
+              child: new Column(
+                children: <Widget>[
+                  Text('Login', style: TextStyle(fontSize: 40),),
+                  SizedBox(),
+                  _buildTextFields(),
+                  _buildButtons(),
+                ],
+              ),
+            ),
         ),
-      ),
+      ),     
     );
   }
 
@@ -145,10 +151,14 @@ class _LoginPageState extends State<LoginPage> {
 
   void _loginPressed () {
     print('The user wants to login with $_email and $_password');
-    Navigator.push(
+    if(_email != '' || _email != null && _password.length >= 6){
+      Navigator.push(
     context,
     MaterialPageRoute(builder: (context) => HomePage()),
   );
+
+    } else{}
+    
   }
 
   void _createAccountPressed () {
