@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/Login.dart';
-import 'HomePage.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -10,8 +9,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Recipe_App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-        primaryColor: Colors.grey,
+        primarySwatch: Colors.red,
+        primaryColor: Colors.red,
       ),
       home: MyHomePage(title: 'Recipe App'),
     );

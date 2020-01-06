@@ -3,7 +3,7 @@ import 'package:recipe_app/HomePage.dart';
 
 class LoginPage extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => new _LoginPageState();
+  State<StatefulWidget> createState() => _LoginPageState();
 }
 
 // Used for controlling whether the user is loggin or creating an account
@@ -14,8 +14,8 @@ enum FormType {
 
 class _LoginPageState extends State<LoginPage> {
 
-  final TextEditingController _emailFilter = new TextEditingController();
-  final TextEditingController _passwordFilter = new TextEditingController();
+  final TextEditingController _emailFilter = TextEditingController();
+  final TextEditingController _passwordFilter = TextEditingController();
   String _email = "";
   String _password = "";
   FormType _form = FormType.login; // our default setting is to login, and we should switch to creating an account when the user chooses to
@@ -54,14 +54,14 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       //appBar: _buildBar(context),
       body: SingleChildScrollView(
               child: Padding(
           padding: const EdgeInsets.only(top: 100),
           child: Container(
               padding: EdgeInsets.all(50),
-              child: new Column(
+              child: Column(
                 children: <Widget>[
                   Text('Login', style: TextStyle(fontSize: 40),),
                   SizedBox(),
@@ -84,21 +84,23 @@ class _LoginPageState extends State<LoginPage> {
   // }
 
   Widget _buildTextFields() {
-    return new Container(
-      child: new Column(
+    return Container(
+      child: Column(
         children: <Widget>[
-          new Container(
-            child: new TextField(
+          Container(
+            child: TextField(
+              cursorColor: Colors.red,
               controller: _emailFilter,
-              decoration: new InputDecoration(
-                labelText: 'Email'
+              decoration: InputDecoration(
+                labelText: 'Email',
               ),
             ),
           ),
-          new Container(
-            child: new TextField(
+           Container(
+            child: TextField(
+              cursorColor: Colors.red,
               controller: _passwordFilter,
-              decoration: new InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Password'
               ),
               obscureText: true,
@@ -111,34 +113,34 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildButtons() {
     if (_form == FormType.login) {
-      return new Container(
-        child: new Column(
+      return Container(
+        child: Column(
           children: <Widget>[
-            new RaisedButton(
-              child: new Text('Login'),
+            RaisedButton(
+              child: Text('Login'),
               onPressed: _loginPressed,
             ),
-            new FlatButton(
-              child: new Text('Dont have an account? Tap here to register.'),
+            FlatButton(
+              child: Text('Dont have an account? Tap here to register.'),
               onPressed: _formChange,
             ),
-            new FlatButton(
-              child: new Text('Forgot Password?'),
+            FlatButton(
+              child: Text('Forgot Password?'),
               onPressed: _passwordReset,
             )
           ],
         ),
       );
     } else {
-      return new Container(
-        child: new Column(
+      return Container(
+        child: Column(
           children: <Widget>[
-            new RaisedButton(
-              child: new Text('Create an Account'),
+            RaisedButton(
+              child: Text('Create an Account'),
               onPressed: _createAccountPressed,
             ),
-            new FlatButton(
-              child: new Text('Have an account? Click here to login.'),
+            FlatButton(
+              child: Text('Have an account? Click here to login.'),
               onPressed: _formChange,
             )
           ],
