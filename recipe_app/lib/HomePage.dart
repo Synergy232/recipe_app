@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:recipe_app/Pages/Lunch.dart';
 
 import 'Pages/Breakfast.dart';
+import 'Pages/Dinner.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -18,7 +19,7 @@ class HomePage extends StatelessWidget {
             children: [
               Breakfast(),
               Lunch(),
-              Icon(Icons.directions_transit),
+              Dinner(),
               Icon(Icons.directions_bike),
             ],
           ),
