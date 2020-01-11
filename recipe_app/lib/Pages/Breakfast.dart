@@ -12,3 +12,7 @@ class Breakfast extends StatelessWidget{
   }
 
 }
+
+Widget build(BuildContext context) {
+  return Image(image: AssetImage('images/image.png'));
+}
