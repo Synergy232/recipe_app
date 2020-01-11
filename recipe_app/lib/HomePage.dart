@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_app/Pages/Dessert.dart';
 import 'package:recipe_app/Pages/Lunch.dart';
 
 import 'Pages/Breakfast.dart';
@@ -20,7 +21,7 @@ class HomePage extends StatelessWidget {
               Breakfast(),
               Lunch(),
               Dinner(),
-              Icon(Icons.directions_bike),
+              Dessert(),
             ],
           ),
           bottomNavigationBar: Material(
