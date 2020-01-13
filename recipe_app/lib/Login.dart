@@ -107,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
             child: TextField(
               cursorColor: Colors.red,
               controller: _passwordFilter,
-              decoration: InputDecoration(labelText: 'Password'),
+              decoration: InputDecoration(labelText: 'Passwort'),
               obscureText: true,
             ),
           )
@@ -126,11 +126,11 @@ class _LoginPageState extends State<LoginPage> {
               onPressed: _loginPressed,
             ),
             FlatButton(
-              child: Text('Dont have an account? Tap here to register.'),
+              child: Text('Noch keinen Account? Tippen Sie hier, um sich zu registrieren.'),
               onPressed: _formChange,
             ),
             FlatButton(
-              child: Text('Forgot Password?'),
+              child: Text('Passwort vergessen?'),
               onPressed: _passwordReset,
             )
           ],
