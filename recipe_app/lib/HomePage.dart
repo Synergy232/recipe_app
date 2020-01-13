@@ -27,16 +27,11 @@ class HomePage extends StatelessWidget {
           bottomNavigationBar: Material(
             color: Colors.red,
             child: TabBar(
-            unselectedLabelColor: Colors.black,
-            labelColor: Colors.white,
-            indicatorColor: Colors.white,
-              tabs: [
-                Tab(text: 'Breakfast'),
-                Tab(text: 'Lunch'),
-                Tab(text: 'Dinner'),
-                Tab(text: 'Dessert')
-              ],
-              ),
+              unselectedLabelColor: Colors.black,
+              labelColor: Colors.white,
+              indicatorColor: Colors.white,
+              tabs: [Tab(text: 'Breakfast'), Tab(text: 'Lunch'), Tab(text: 'Dinner'), Tab(text: 'Dessert')],
+            ),
           ),
         ),
       ),

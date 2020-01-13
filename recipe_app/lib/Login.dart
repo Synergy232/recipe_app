@@ -7,13 +7,9 @@ class LoginPage extends StatefulWidget {
 }
 
 // Used for controlling whether the user is loggin or creating an account
-enum FormType {
-  login,
-  register
-}
+enum FormType { login, register }
 
 class _LoginPageState extends State<LoginPage> {
-
   final TextEditingController _emailFilter = TextEditingController();
   final TextEditingController _passwordFilter = TextEditingController();
   String _email = "";
@@ -42,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   // Swap in between our two forms, registering and logging in
-  void _formChange () async {
+  void _formChange() async {
     setState(() {
       if (_form == FormType.register) {
         _form = FormType.login;
@@ -55,23 +51,34 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white70,
       //appBar: _buildBar(context),
       body: SingleChildScrollView(
-              child: Padding(
+        child: Padding(
           padding: const EdgeInsets.only(top: 100),
           child: Container(
-              padding: EdgeInsets.all(50),
-              child: Column(
-                children: <Widget>[
-                  Text('Login', style: TextStyle(fontSize: 40),),
-                  SizedBox(),
-                  _buildTextFields(),
-                  _buildButtons(),
-                ],
-              ),
+            padding: EdgeInsets.all(50),
+            child: Column(
+              children: <Widget>[
+                //RandoShape(),
+                Stack(children: <Widget>[
+                  RandoShape(),
+                  RandoShape2(),
+                ]),
+                RandoShape3(),
+                SizedBox(height: 10),
+                Text(
+                  'Anmeldung',
+                  style: TextStyle(fontSize: 40),
+                ),
+                SizedBox(),
+                _buildTextFields(),
+                _buildButtons(),
+              ],
             ),
+          ),
         ),
-      ),     
+      ),
     );
   }
 
@@ -96,13 +103,11 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
           ),
-           Container(
+          Container(
             child: TextField(
               cursorColor: Colors.red,
               controller: _passwordFilter,
-              decoration: InputDecoration(
-                labelText: 'Password'
-              ),
+              decoration: InputDecoration(labelText: 'Password'),
               obscureText: true,
             ),
           )
@@ -117,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           children: <Widget>[
             RaisedButton(
-              child: Text('Login'),
+              child: Text('Anmeldung'),
               onPressed: _loginPressed,
             ),
             FlatButton(
@@ -151,26 +156,61 @@ class _LoginPageState extends State<LoginPage> {
 
   // These functions can self contain any user auth logic required, they all have access to _email and _password
 
-  void _loginPressed () {
+  void _loginPressed() {
     print('The user wants to login with $_email and $_password');
-    if(_email != '' || _email != null && _password.length >= 6){
+    if (_email != '' || _email != null && _password.length >= 6) {
       Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => HomePage()),
-  );
-
-    } else{}
-    
+        context,
+        MaterialPageRoute(builder: (context) => HomePage()),
+      );
+    } else {}
   }
 
-  void _createAccountPressed () {
+  void _createAccountPressed() {
     print('The user wants to create an accoutn with $_email and $_password');
-
   }
 
-  void _passwordReset () {
+  void _passwordReset() {
     print("The user wants a password reset request sent to $_email");
   }
+}
 
+class RandoShape extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 100,
+      width: 220,
+      color: Colors.red,
+    );
+  }
+}
 
+class RandoShape2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 220,
+      color: Colors.black,
+    );
+  }
+}
+
+class RandoShape3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 50,
+      width: 220,
+      color: Colors.yellow,
+    );
+  }
+}
+
+class TriangleLmao extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return null;
+  }
 }
