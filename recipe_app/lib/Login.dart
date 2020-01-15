@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:recipe_app/HomePage.dart';
 
@@ -51,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white70,
+      backgroundColor: Colors.primaries[Random().nextInt(Colors.primaries.length)],
       //appBar: _buildBar(context),
       body: SingleChildScrollView(
         child: Padding(
@@ -62,13 +64,13 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 CustomPaint(
                   painter: TrianglePainter(
-                    strokeColor: Colors.blue,
+                    strokeColor: Colors.primaries[Random().nextInt(Colors.primaries.length)],
                     strokeWidth: 10,
                     paintingStyle: PaintingStyle.fill,
                   ),
                   child: Container(
-                    height: 180,
-                    width: 200,
+                    height: 90,
+                    width: 100,
                   ),
                 ),
 
