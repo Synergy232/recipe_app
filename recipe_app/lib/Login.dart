@@ -60,12 +60,26 @@ class _LoginPageState extends State<LoginPage> {
             padding: EdgeInsets.all(50),
             child: Column(
               children: <Widget>[
+                CustomPaint(
+                  painter: TrianglePainter(
+                    strokeColor: Colors.blue,
+                    strokeWidth: 10,
+                    paintingStyle: PaintingStyle.fill,
+                  ),
+                  child: Container(
+                    height: 180,
+                    width: 200,
+                  ),
+                ),
+
                 //RandoShape(),
-                Stack(children: <Widget>[
-                  RandoShape(),
-                  RandoShape2(),
-                ]),
-                RandoShape3(),
+
+                // Stack(children: <Widget>[
+                //   RandoShape(),
+                //   RandoShape2(),
+                // ]),
+                // RandoShape3(),
+
                 SizedBox(height: 10),
                 Text(
                   'Anmeldung',
@@ -208,9 +222,33 @@ class RandoShape3 extends StatelessWidget {
   }
 }
 
-class TriangleLmao extends StatelessWidget {
+class TrianglePainter extends CustomPainter {
+  final Color strokeColor;
+  final PaintingStyle paintingStyle;
+  final double strokeWidth;
+
+  TrianglePainter({this.strokeColor = Colors.black, this.strokeWidth = 3, this.paintingStyle = PaintingStyle.stroke});
+
   @override
-  Widget build(BuildContext context) {
-    return null;
+  void paint(Canvas canvas, Size size) {
+    Paint paint = Paint()
+      ..color = strokeColor
+      ..strokeWidth = strokeWidth
+      ..style = paintingStyle;
+
+    canvas.drawPath(getTrianglePath(size.width, size.height), paint);
+  }
+
+  Path getTrianglePath(double x, double y) {
+    return Path()
+      ..moveTo(0, y)
+      ..lineTo(x / 2, 0)
+      ..lineTo(x, y)
+      ..lineTo(0, y);
+  }
+
+  @override
+  bool shouldRepaint(TrianglePainter oldDelegate) {
+    return oldDelegate.strokeColor != strokeColor || oldDelegate.paintingStyle != paintingStyle || oldDelegate.strokeWidth != strokeWidth;
   }
 }
