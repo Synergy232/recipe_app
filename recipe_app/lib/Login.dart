@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: 10),
                 Text(
                   'Anmeldung',
-                  style: TextStyle(fontSize: 40),
+                  style: TextStyle(fontSize: 40, color: Colors.primaries[Random().nextInt(Colors.primaries.length)]),
                 ),
                 SizedBox(),
                 _buildTextFields(),
