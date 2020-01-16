@@ -11,16 +11,61 @@ class LoginPage extends StatefulWidget {
 // Used for controlling whether the user is loggin or creating an account
 enum FormType { login, register }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<LoginPage> with SingleTickerProviderStateMixin {
+  AnimationController _controller;
+
+  final background = TweenSequence<Color>([
+    TweenSequenceItem(
+      weight: 1.0,
+      tween: ColorTween(
+        begin: Colors.red,
+        end: Colors.green,
+      ),
+    ),
+    TweenSequenceItem(
+      weight: 1.0,
+      tween: ColorTween(
+        begin: Colors.yellow,
+        end: Colors.blue,
+      ),
+    ),
+    TweenSequenceItem(
+      weight: 1.0,
+      tween: ColorTween(
+        begin: Colors.purple,
+        end: Colors.orange,
+      ),
+    ),
+    // TweenSequenceItem(
+    //   weight: 1.0,
+    //   tween: ColorTween(
+    //     begin: Colors.white,
+    //     end: Colors.black12,
+    //   ),
+    // ),
+  ]);
+
   final TextEditingController _emailFilter = TextEditingController();
   final TextEditingController _passwordFilter = TextEditingController();
   String _email = "";
   String _password = "";
   FormType _form = FormType.login; // our default setting is to login, and we should switch to creating an account when the user chooses to
 
-  _LoginPageState() {
+  @override
+  void initState() {
+    super.initState();
     _emailFilter.addListener(_emailListen);
     _passwordFilter.addListener(_passwordListen);
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+      //duration: const Duration(seconds: 10),
+    );
+    _controller.addListener(() {
+      if (_controller.isCompleted) _controller.reverse();
+      if (_controller.isDismissed) _controller.forward();
+    });
+    _controller.forward();
   }
 
   void _emailListen() {
@@ -55,42 +100,53 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Colors.primaries[Random().nextInt(Colors.primaries.length)],
       //appBar: _buildBar(context),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 100),
-          child: Container(
-            padding: EdgeInsets.all(50),
-            child: Column(
-              children: <Widget>[
-                CustomPaint(
-                  painter: TrianglePainter(
-                    strokeColor: Colors.primaries[Random().nextInt(Colors.primaries.length)],
-                    strokeWidth: 10,
-                    paintingStyle: PaintingStyle.fill,
+      body: AnimatedBuilder(
+        animation: _controller,
+        builder: (BuildContext context, Widget child) {
+          final color = background.evaluate(_controller);
+
+          return Container(
+            color: color,
+            child: child,
+          );
+        },
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 100),
+            child: Container(
+              padding: EdgeInsets.all(50),
+              child: Column(
+                children: <Widget>[
+                  // CustomPaint(
+                  //   painter: TrianglePainter(
+                  //     strokeColor: Colors.primaries[Random().nextInt(Colors.primaries.length)],
+                  //     strokeWidth: 10,
+                  //     paintingStyle: PaintingStyle.fill,
+                  //   ),
+                  //   child: Container(
+                  //     height: 90,
+                  //     width: 100,
+                  //   ),
+                  // ),
+
+                  //RandoShape(),
+
+                  Stack(children: <Widget>[
+                    RandoShape(),
+                    RandoShape2(),
+                  ]),
+                  RandoShape3(),
+
+                  SizedBox(height: 10),
+                  Text(
+                    'Anmeldung',
+                    style: TextStyle(fontSize: 40, color: Colors.primaries[Random().nextInt(Colors.primaries.length)]),
                   ),
-                  child: Container(
-                    height: 90,
-                    width: 100,
-                  ),
-                ),
-
-                //RandoShape(),
-
-                // Stack(children: <Widget>[
-                //   RandoShape(),
-                //   RandoShape2(),
-                // ]),
-                // RandoShape3(),
-
-                SizedBox(height: 10),
-                Text(
-                  'Anmeldung',
-                  style: TextStyle(fontSize: 40, color: Colors.primaries[Random().nextInt(Colors.primaries.length)]),
-                ),
-                SizedBox(),
-                _buildTextFields(),
-                _buildButtons(),
-              ],
+                  SizedBox(),
+                  _buildTextFields(),
+                  _buildButtons(),
+                ],
+              ),
             ),
           ),
         ),
