@@ -60,6 +60,9 @@ class _LoginPageState extends State<LoginPage> {
               child: Padding(
           padding: const EdgeInsets.only(top: 100),
           child: Container(
+            decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage("images/abstract_bg.jpg"), fit: BoxFit.contain),
+            ),
               padding: EdgeInsets.all(50),
               child: Column(
                 children: <Widget>[
